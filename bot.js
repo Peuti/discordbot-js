@@ -8,7 +8,6 @@ module.exports = client;
 
 if (process.env.TOKEN == null) {
     console.log("An discord token is empty.");
-    sleep(60000).then(() => console.log("Service is getting stopped automatically"));
     return 0;
 }
 
@@ -17,7 +16,7 @@ const discordLogin = async() => {
         await client.login(process.env.TOKEN);  
     } catch (TOKEN_INVALID) {
         console.log("An invalid token was provided");
-        sleep(60000).then(() => console.log("Service is getting stopped automatically"));
+
     }
 }
 
