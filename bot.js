@@ -1,7 +1,7 @@
 const { Client , Intents , Collection, MessageEmbed, User} = require('discord.js')
 const fs = require('fs') 
 const client = new Client({intents:32767})
-const { token, prefix } = require('./Config/Config')
+const { prefix } = require('./Config/Config')
 const dotenv = require('dotenv'); 
 dotenv.config();
 module.exports = client;
@@ -61,4 +61,4 @@ client.on('messageCreate', (message) => {
 
 
 
-client.login(token)
+
