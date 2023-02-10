@@ -2,8 +2,27 @@ const { Client , Intents , Collection, MessageEmbed, User} = require('discord.js
 const fs = require('fs') 
 const client = new Client({intents:32767})
 const { token, prefix } = require('./Config/Config')
+const dotenv = require('dotenv'); 
+dotenv.config();
 module.exports = client;
 
+if (process.env.TOKEN == null) {
+    console.log("An discord token is empty.");
+    sleep(60000).then(() => console.log("Service is getting stopped automatically"));
+    return 0;
+}
+
+const discordLogin = async() => {
+    try {
+        await client.login(process.env.TOKEN);  
+    } catch (TOKEN_INVALID) {
+        console.log("An invalid token was provided");
+        sleep(60000).then(() => console.log("Service is getting stopped automatically"));
+    }
+}
+
+
+discordLogin();
 
 client.once('ready', async ()=>{
     console.log("봇이 준비되었습니다")
